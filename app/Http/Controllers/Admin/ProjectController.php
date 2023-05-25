@@ -77,7 +77,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $technologies = Technology::all();
-        return view('projects.show', compact('project'));
+        return view('projects.show', compact('project', 'technologies'));
     }
 
     /**
@@ -88,8 +88,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $projects = Project::all();
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('projects.edit', compact('project', 'types'));
+        return view('projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -102,6 +104,8 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
+
+        $project->technologies()->sync($request->technologies);
         $project->update($form_data);
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);

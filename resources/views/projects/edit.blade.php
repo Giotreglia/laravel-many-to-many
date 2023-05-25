@@ -42,13 +42,35 @@
         </div>
         <div class="mb-3">
             <label for="type_id" class="form-label">Selezione tipologia</label>
+
             <select class="form-select" @error('type_id') is-invalis @enderror name="type_id" id="type_id">
-                <option @selected(old('type_id') == '') value="">Nessuna categoria</option>
+                <option @selected(old('type_id', $project->type_id) == '') value="">Nessuna categoria</option>
                 @foreach ($types as $type)
-                    <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                    <option @selected(old('type_id', $project->type_id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
             </select>
             @error('type_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <span class="mb-2 d-block">Tecnologie</span>
+            @foreach ($technologies as $technology)
+                <div class="form-check form-switch">
+                    @if ($errors->any())
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="technologies{{ $technology->id }}" name="technologies[]"
+                            @if (in_array($technology->id, old('technologies', []))) checked @endif value="{{ $technology->id }}">
+                    @else
+                        <input class="form-check-input" type="checkbox" role="switch"
+                            id="technologies{{ $technology->id }}" name="technologies[]"
+                            @if ($project->technologies->contains($technology->id)) checked @endif value="{{ $technology->id }}">
+                    @endif
+                    <label class="form-check-label"
+                        for="technologies{{ $technology->id }}">{{ $technology->name }}</label>
+                </div>
+            @endforeach
+            @error('technologies')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

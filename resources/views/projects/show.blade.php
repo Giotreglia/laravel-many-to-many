@@ -13,9 +13,13 @@
                     <li class="list-group-item">Type: {{ $project->type?->name }}</li>
                     <li class="list-group-item">Client: {{ $project->client }}</li>
                     <li class="list-group-item">
-                        @foreach ($project->technologies as $technology)
-                            <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
-                        @endforeach
+                        @if (count($project->technologies) > 0)
+                            @foreach ($project->technologies as $technology)
+                                <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
+                            @endforeach
+                        @else
+                            <span class="badge rounded-pill text-bg-primary">Nessuna tecnologia selezionata</span>
+                        @endif
                     </li>
                 </ul>
                 <a class="btn btn-primary my-2" href="{{ route('admin.projects.index') }}">

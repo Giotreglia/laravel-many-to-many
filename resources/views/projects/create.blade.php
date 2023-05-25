@@ -52,6 +52,7 @@
             @enderror
         </div>
         <div class="mb-3">
+            <span class="mb-2 d-block">Tecnologie</span>
             @foreach ($technologies as $technology)
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="technologies{{ $technology->id }}"
