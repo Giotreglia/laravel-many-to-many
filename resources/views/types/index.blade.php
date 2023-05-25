@@ -7,7 +7,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Projects</th>
-                <th scope="col">Actions</th>
+                {{-- <th scope="col">Actions</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -17,7 +17,7 @@
                     <td>{{ $type->name }}</td>
                     <td>{{ count($type->projects) }}</td>
 
-                    <td class="d-flex gap-1">
+                    {{--                     <td class="d-flex gap-1">
                         <a class="btn btn-warning" href="{{ route('admin.types.edit', $type->slug) }}">
                             Modifica
                         </a>
@@ -26,7 +26,7 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Elimina</button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
         </tbody>

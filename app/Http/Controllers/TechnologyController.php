@@ -65,9 +65,8 @@ class TechnologyController extends Controller
      * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Technology $technology)
     {
-        $technology = Technology::findOrFail($id);
         return view('technologies.edit', compact('technology'));
     }
 
@@ -81,12 +80,9 @@ class TechnologyController extends Controller
     public function update(Request $request, Technology $technology)
     {
         $form_data = $request->all();
-        $newTechnology = new Technology();
-        $newTechnology->name = $form_data['title'];
-        $newTechnology->slug = Str::slug($form_data['title'], '-');
-        $newTechnology->save();
+        $technology->update($form_data);
 
-        return redirect()->route('technologies.index', ['technology' => $newTechnology->slug]);
+        return redirect()->route('admin.technologies.index');
     }
 
     /**

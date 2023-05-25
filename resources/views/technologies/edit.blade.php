@@ -9,11 +9,11 @@
         <div class="mb-3">
             <div>
                 <span>Nome originale</span>
-                <span>{{ old($technologies->title) }}</span>
+                <span class="d-block mb-3 fs-3">{{ old('name', $technology->name) }}</span>
             </div>
-            <label for="title" class="form-label">Nome modificato</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
-            @error('title')
+            <label for="name" class="form-label">Nome modificato</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
+            @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
