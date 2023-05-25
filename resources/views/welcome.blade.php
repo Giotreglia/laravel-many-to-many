@@ -10,7 +10,8 @@
                             <h5 class="card-title">{{ $project->title }}</h5>
                             <p class="card-text">{{ $project->description }}</p>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Type: {{ $project->type }}</li>
+                                <li class="list-group-item">Type:
+                                    {{ $project->type ? $project->type->name : 'Nessuna tipologia' }}</li>
                                 <li class="list-group-item">Client: {{ $project->client }}</li>
                             </ul>
                             <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">Vedi</a>
