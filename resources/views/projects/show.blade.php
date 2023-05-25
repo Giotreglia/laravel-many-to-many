@@ -12,6 +12,11 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Type: {{ $project->type?->name }}</li>
                     <li class="list-group-item">Client: {{ $project->client }}</li>
+                    <li class="list-group-item">
+                        @foreach ($project->technologies as $technology)
+                            <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
+                        @endforeach
+                    </li>
                 </ul>
                 <a class="btn btn-primary my-2" href="{{ route('admin.projects.index') }}">
                     Torna alla lista

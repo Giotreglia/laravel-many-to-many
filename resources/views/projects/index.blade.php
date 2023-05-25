@@ -12,6 +12,7 @@
                 <th scope="col">Client</th>
                 <th scope="col">Type</th>
                 <th scope="col">Slug</th>
+                <th scope="col">Technology</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,11 @@
                     <td>{{ $project->client }}</td>
                     <td>{{ $project->type?->name }}</td>
                     <td>{{ $project->slug }}</td>
+                    <td>
+                        @foreach ($project->technologies as $technology)
+                            <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
+                        @endforeach
+                    </td>
                     <td class="d-flex gap-1 justify-content-end">
                         <a class="btn btn-secondary" href="{{ route('admin.projects.show', $project->slug) }}">
                             Dettagli

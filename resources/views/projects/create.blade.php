@@ -51,6 +51,20 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            @foreach ($technologies as $technology)
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="technologies{{ $technology->id }}"
+                        name="technologies[]" {{-- @if (in_array($technologies->id, old('technologies', []))) checked @endif --}} value="{{ $technology->id }}">
+
+                    <label class="form-check-label"
+                        for="technologies{{ $technology->id }}">{{ $technology->name }}</label>
+                </div>
+            @endforeach
+            @error('technologies')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
         <button type="submit" class="btn btn-primary">Salva modifiche</button>
         <button type="reset" class="btn btn-warning">Annulla</button>
