@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Models\Project;
 use App\Http\Controllers\Admin\DashboardController;

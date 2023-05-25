@@ -59,6 +59,24 @@
                                             Indice
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('admin.technologies.index') }}"
+                                            class="nav-link ms-bg-blue link-body-emphasis {{ Route::currentRouteName() == 'admin.technologies.index' ? 'active' : '' }}">
+                                            <svg class="bi pe-none me-2" width="16" height="16">
+                                                <use xlink:href="#speedometer2"></use>
+                                            </svg>
+                                            Tecnologie
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.types.index') }}"
+                                            class="nav-link ms-bg-blue link-body-emphasis {{ Route::currentRouteName() == 'admin.types.index' ? 'active' : '' }}">
+                                            <svg class="bi pe-none me-2" width="16" height="16">
+                                                <use xlink:href="#speedometer2"></use>
+                                            </svg>
+                                            Tipologie
+                                        </a>
+                                    </li>
                                 </ul>
                                 <hr>
                             </div>

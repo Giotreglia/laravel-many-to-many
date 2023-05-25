@@ -13,6 +13,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Technology</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +29,7 @@
                             <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
                         @endforeach
                     </td>
-                    <td class="d-flex gap-1 justify-content-end">
+                    <td class="d-flex gap-1">
                         <a class="btn btn-secondary" href="{{ route('admin.projects.show', $project->slug) }}">
                             Dettagli
                         </a>

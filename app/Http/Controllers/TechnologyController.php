@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -14,7 +15,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::all();
+        return view('technologies.index', compact('technologies'));
     }
 
     /**
@@ -24,7 +26,8 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        $technologies = Technology::all();
+        return view('technologies.create', compact('technologies'));
     }
 
     /**
@@ -35,7 +38,14 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $newTechnology = new Technology();
+        $newTechnology->name = $form_data['title'];
+        $newTechnology->slug = Str::slug($form_data['title'], '-');
+        $newTechnology->save();
+
+        return redirect()->route('admin.technologies.index', ['technology' => $newTechnology->slug]);
+
     }
 
     /**
@@ -55,9 +65,10 @@ class TechnologyController extends Controller
      * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function edit(Technology $technology)
+    public function edit($id)
     {
-        //
+        $technology = Technology::findOrFail($id);
+        return view('technologies.edit', compact('technology'));
     }
 
     /**
@@ -69,7 +80,13 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        //
+        $form_data = $request->all();
+        $newTechnology = new Technology();
+        $newTechnology->name = $form_data['title'];
+        $newTechnology->slug = Str::slug($form_data['title'], '-');
+        $newTechnology->save();
+
+        return redirect()->route('technologies.index', ['technology' => $newTechnology->slug]);
     }
 
     /**
