@@ -9,6 +9,11 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $project->title }}</h5>
                             <p class="card-text">{{ $project->description }}</p>
+                            <p>
+                                @foreach ($project->technologies as $technology)
+                                    <span class="badge rounded-pill text-bg-primary">{{ $technology->name }}</span>
+                                @endforeach
+                            </p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Type:
                                     {{ $project->type ? $project->type->name : 'Nessuna tipologia' }}</li>

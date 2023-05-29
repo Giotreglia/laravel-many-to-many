@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form class="my-3" method="POST" action="{{ route('admin.projects.store') }}">
+    <form class="my-3" method="POST" action="{{ route('admin.projects.store') }}" enctype="multipart/form-data">
 
         @csrf
 
@@ -25,10 +25,12 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Url immagine</label>
-            <input type="text" class="form-control @error('image') is-invalid @enderror" id="image" name="image"
-                value="{{ old('image') }}">
+
+            <input type="file" class="form-control @error('image') is-invalid @enderror " id="image" name="image">
             @error('image')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
             @enderror
         </div>
         <div class="mb-3">
@@ -56,7 +58,8 @@
             @foreach ($technologies as $technology)
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="technologies{{ $technology->id }}"
-                        name="technologies[]" {{-- @if (in_array($technologies->id, old('technologies', []))) checked @endif --}} value="{{ $technology->id }}">
+                        name="technologies[]" @if (in_array($technology->id, old('technologies', []))) checked @endif
+                        value="{{ $technology->id }}">
 
                     <label class="form-check-label"
                         for="technologies{{ $technology->id }}">{{ $technology->name }}</label>

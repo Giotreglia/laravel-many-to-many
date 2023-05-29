@@ -4,7 +4,10 @@
     <div class="container d-flex justify-content-center p-5">
         <div class="col-4">
             <div class="card">
-                <img src="{{ $project->image }}" class="card-img-top ms_img" alt="{{ $project->title }}">
+                @if ($project->image)
+                    <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top ms_img"
+                        alt="{{ $project->title }}">
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $project->title }}</h5>
                     <p class="card-text">{{ $project->description }}</p>

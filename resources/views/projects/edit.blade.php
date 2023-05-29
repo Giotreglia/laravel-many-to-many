@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form class="my-3" method="POST" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}">
+    <form class="my-3" method="POST" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}"
+        enctype="multipart/form-data">
 
         @csrf
         @method('PUT')

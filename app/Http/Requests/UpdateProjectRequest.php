@@ -27,7 +27,7 @@ class UpdateProjectRequest extends FormRequest
 
             'title' => 'required|max:255',
             'description' => 'nullable|max:65535',
-            'image' => 'nullable|url|max:255',
+            'image' => 'nullable|image|max:1024',
             'client' => 'nullable|max:30',
             'slug' => 'nullable',
             'type_id' => 'nullable|exists:types,id',
